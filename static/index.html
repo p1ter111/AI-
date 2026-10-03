@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>自动修图机</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="topbar">
+        <div>
+          <p class="eyebrow">Aesthetic Guardrail Retouch</p>
+          <h1>自动修图机</h1>
+        </div>
+        <div class="actions">
+          <button id="downloadAll" class="secondary" type="button" disabled>下载全部</button>
+          <button id="clearAll" class="ghost" type="button">清空</button>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <aside class="import-panel">
+          <label id="dropzone" class="dropzone" for="fileInput">
+            <input
+              id="fileInput"
+              type="file"
+              accept=".jpg,.jpeg,.png,.tif,.tiff,.bmp,.webp,.dng,.nef,.cr2,.cr3,.arw,.orf,.rw2,.raf,.pef,.srw,.raw"
+              multiple
+            />
+            <input
+              id="folderInput"
+              type="file"
+              accept=".jpg,.jpeg,.png,.tif,.tiff,.bmp,.webp,.dng,.nef,.cr2,.cr3,.arw,.orf,.rw2,.raf,.pef,.srw,.raw"
+              multiple
+              webkitdirectory
+              directory
+            />
+            <span class="upload-icon" aria-hidden="true">+</span>
+            <strong>导入大量图片</strong>
+            <span>拖放图片，或选择照片/文件夹</span>
+            <span class="pick-actions">
+              <button id="pickFiles" class="pick-button" type="button">选择照片</button>
+              <button id="pickFolder" class="pick-button" type="button">选择文件夹</button>
+            </span>
+          </label>
+
+          <section class="reference-panel">
+            <div class="section-head">
+              <h2>自动审美参考</h2>
+              <span id="referenceState">自动运行</span>
+            </div>
+            <p id="referenceMessage" class="reference-copy">软件会自动参照内置审美目标和网络样片，不需要用户自己找参考图。</p>
+            <div id="referenceList" class="reference-list"></div>
+          </section>
+
+          <div class="status-stack">
+            <div class="metric">
+              <span>队列</span>
+              <strong id="queuedCount">0</strong>
+            </div>
+            <div class="metric">
+              <span>完成</span>
+              <strong id="doneCount">0</strong>
+            </div>
+            <div class="metric">
+              <span>RAW</span>
+              <strong id="rawState">检测中</strong>
+            </div>
+          </div>
+
+          <div class="format-box">
+            <span>质量护栏</span>
+            <p>自动限制偏色、过饱和、过曝和过度锐化；每张图会先判断场景，再选择最接近的参考标准。</p>
+          </div>
+
+          <section class="diagnostics">
+            <div class="section-head">
+              <h2>最近诊断</h2>
+              <span id="eventCount">0 条</span>
+            </div>
+            <div id="eventList" class="event-list"></div>
+          </section>
+        </aside>
+
+        <section class="queue-panel">
+          <div class="queue-head">
+            <div>
+              <h2>处理队列</h2>
+              <p id="queueHint">等待导入图片</p>
+            </div>
+            <div class="legend">
+              <span><i class="dot queued"></i>等待</span>
+              <span><i class="dot processing"></i>处理中</span>
+              <span><i class="dot done"></i>完成</span>
+            </div>
+          </div>
+          <section id="calibrationPanel" class="calibration-panel" hidden>
+            <div class="section-head">
+              <h2>真实样张校准</h2>
+              <span id="calibrationCount">0 组</span>
+            </div>
+            <p class="calibration-copy">软件会自己参考内置和缓存样片，这里直接展示真实照片的自动校准前后。</p>
+            <div id="calibrationGrid" class="calibration-grid"></div>
+          </section>
+          <div id="emptyState" class="empty-state">
+            <div class="empty-mark"></div>
+            <strong>只管导入，软件会自己找参考</strong>
+            <span>系统会参考别人的优秀图片统计特征，同时用质量护栏防止修得奇怪。</span>
+          </div>
+          <div id="jobGrid" class="job-grid" aria-live="polite"></div>
+        </section>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>

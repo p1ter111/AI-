@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Runtime data and generated image outputs
+workspace/logs/
+workspace/uploads/
+workspace/outputs/
+workspace/previews/
+workspace/quality_inputs/
+workspace/quality_outputs/
+workspace/reference_outputs/
+workspace/reference_outputs2/
+workspace/test_inputs/
+workspace/*.jpg
+workspace/*.jpeg
+workspace/*.png
+workspace/*.webp
+workspace/jobs.json
+
+# Electron dependencies, caches and build artifacts
+桌面台历加时钟/node_modules/
+桌面台历加时钟/.cache/
+桌面台历加时钟/release/
+桌面台历加时钟/dist/
+桌面台历加时钟/out/
+桌面台历加时钟/tools/
+
+# Local/editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

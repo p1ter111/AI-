@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>桌面台历时钟</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="widget" id="widget">
+      <header class="titlebar">
+        <div class="drag-region">
+          <span class="dot"></span>
+          <span>桌面台历时钟</span>
+        </div>
+        <div class="window-actions">
+          <button class="icon-button" id="minimizeBtn" title="隐藏">-</button>
+          <button class="icon-button" id="closeBtn" title="关闭到托盘">×</button>
+        </div>
+      </header>
+
+      <section class="clock-panel">
+        <div class="ampm" id="ampm">上午</div>
+        <time class="time" id="time">00:00:00</time>
+        <div class="date-line" id="dateLine">2026年6月29日 星期一</div>
+        <div class="sync-line" id="syncLine">正在校准网络时间...</div>
+      </section>
+
+      <section class="month-panel">
+        <div class="month-header">
+          <button class="nav-button" id="prevMonth" title="上个月">‹</button>
+          <div>
+            <div class="month-title" id="monthTitle">2026年6月</div>
+            <div class="today-tip" id="todayTip">今天</div>
+          </div>
+          <button class="nav-button" id="nextMonth" title="下个月">›</button>
+        </div>
+
+        <div class="week-row">
+          <span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span>
+        </div>
+        <div class="calendar-grid" id="calendarGrid"></div>
+      </section>
+
+      <section class="settings-panel">
+        <label class="select-row">
+          <span>时区</span>
+          <select id="timeZone"></select>
+        </label>
+        <button class="text-button" id="syncTimeBtn" type="button">立即校时</button>
+        <label class="toggle-row">
+          <span>窗口置顶</span>
+          <input type="checkbox" id="alwaysOnTop" />
+        </label>
+        <label class="toggle-row">
+          <span>开机自启</span>
+          <input type="checkbox" id="openAtLogin" />
+        </label>
+        <label class="slider-row">
+          <span>透明度</span>
+          <input type="range" id="opacity" min="0.65" max="1" step="0.01" value="0.94" />
+        </label>
+      </section>
+    </main>
+    <script src="./renderer.js"></script>
+  </body>
+</html>

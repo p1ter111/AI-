@@ -1,0 +1,47 @@
+{
+  "name": "desktop-calendar-clock",
+  "version": "1.0.0",
+  "description": "A floating desktop calendar and clock widget for Windows.",
+  "main": "src/main.js",
+  "author": "Desktop Calendar Clock",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win nsis",
+    "pack": "electron-builder --win dir"
+  },
+  "build": {
+    "appId": "com.desktop.calendarclock",
+    "productName": "桌面台历时钟",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "src/**/*",
+      "package.json"
+    ],
+    "win": {
+      "signAndEditExecutable": false,
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "${productName}-${version}-安装包.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "桌面台历时钟"
+    }
+  },
+  "devDependencies": {
+    "electron": "^31.7.7",
+    "electron-builder": "^24.13.3"
+  }
+}
